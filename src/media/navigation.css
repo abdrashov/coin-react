@@ -1,0 +1,79 @@
+.navigation {
+    height: 45px;
+}
+
+.navigation .navigation-ul a {
+    width: 45px;
+    height: 45px;
+    z-index: 12;
+}
+
+.navigation .navigation-ul a .icon {
+    line-height: 45px;
+    font-size: 1.6em;
+    transition: 0.5s;
+}
+
+.navigation .navigation-ul a.active .icon {
+    margin-top: 5px;
+    transform: translateY(-28px);
+    color: rgb(118 169 250 / var(--tw-bg-opacity));
+}
+
+.navigation .navigation-ul a .text {
+    position: absolute;
+    background: rgb(118 169 250 / var(--tw-bg-opacity));
+    color: #fff;
+    padding: 2px 7px;
+    border-radius: 12px;
+    font-weight: 400;
+    font-size: 0.6em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    opacity: 0;
+    transform: translateY(15px);
+}
+
+.navigation .navigation-ul a.active .text {
+    transform: translateY(3px);
+    opacity: 1;
+}
+
+.navigation .show {
+    position: absolute;
+    top: -25px;
+    width: 60px;
+    height: 60px;
+    transition: 0.5s;
+    border-radius: 50%;
+    transform: translateY(100px);
+    background: white;
+}
+
+.navigation a.active .show {
+    transform: translateY(0);
+}
+
+.navigation .show::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -23px;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 15px 20px white;
+}
+
+.navigation .show::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: -23px;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: -15px 20px white;
+}
