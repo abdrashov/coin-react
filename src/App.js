@@ -1,5 +1,5 @@
 import React from "react"
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import SideBarContext from "./context/SideBarContext";
 import AddPage from "./pages/AddPage";
 import ExpensePage from "./pages/ExpensePage";
@@ -10,9 +10,12 @@ import Page404 from "./pages/404";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
 
       <Routes>
+
+        <Route path="/" element={<Navigate to="/add" />} />
+
         <Route path="add" element={<AddPage />} />
         <Route path="expense" element={<ExpensePage />} />
         <Route path="analytics" element={<AnalyticsPage />} />
