@@ -10,7 +10,7 @@ import Page404 from "./pages/404";
 
 function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-50">
 
       <Routes>
 

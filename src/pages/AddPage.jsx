@@ -33,15 +33,6 @@ const AddPage = () => {
     }
 
     const removeNumber = () => {
-        let res = sum.split('.')
-        if (res.length === 2) {
-            let current_number = sum.substring(0, sum.length - (res[1].length === 1 ? 2 : 1))
-
-            setSum(current_number)
-            setShowSum(current_number.replace(/(\d)(?=(\d{3})+(\D|$))/g, '$1 '))
-            return '';
-        }
-
         if (parseFloat(sum) < 10 || sum === '') {
             setSum('0')
             setShowSum('0')
@@ -115,14 +106,44 @@ const AddPage = () => {
                         </button>
                     </header>
                     <div className="mt-4 mb-6">
-                        <p className="text-sm text-gray-700">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum et
-                            eligendi repudiandae voluptatem tempore!
-                        </p>
+                        <div className="grid grid-cols-5 gap-4">
+                            <button onClick={() => addNumber(1)}>
+                                <div className="mx-auto w-10 h-10 bg-blue-200 text-blue-500 text-lg rounded-full flex items-center justify-center active:bg-gray-100">
+                                    <FontAwesomeIcon icon="fa-solid fa-burger" />
+                                </div>
+                                <div className="text-sm text-gray-800">
+                                    Еда
+                                </div>
+                            </button>
+                            <button onClick={() => addNumber(1)} className="hover:text-blue-500 duration-150">
+                                <div className="mx-auto w-10 h-10 bg-blue-200 text-blue-500 text-lg rounded-full flex items-center justify-center">
+                                    <FontAwesomeIcon icon="fa-solid fa-burger" />
+                                </div>
+                                <div className="text-sm text-gray-800">
+                                    Еда
+                                </div>
+                            </button>
+                            <button onClick={() => addNumber(1)} className="hover:text-blue-500 duration-150">
+                                <div className="mx-auto w-10 h-10 bg-blue-200 text-blue-500 text-lg rounded-full flex items-center justify-center">
+                                    <FontAwesomeIcon icon="fa-solid fa-burger" />
+                                </div>
+                                <div className="text-sm text-gray-800">
+                                    Еда
+                                </div>
+                            </button>
+                            <button onClick={() => addNumber(1)} className="hover:text-blue-500 duration-150">
+                                <div className="mx-auto w-10 h-10 bg-blue-200 text-blue-500 text-lg rounded-full flex items-center justify-center">
+                                    <FontAwesomeIcon icon="fa-solid fa-burger" />
+                                </div>
+                                <div className="text-sm text-gray-800">
+                                    Еда
+                                </div>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
 
     return (
         <div className="h-screen">
