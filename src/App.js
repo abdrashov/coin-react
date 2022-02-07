@@ -4,7 +4,8 @@ import SideBarContext from "./context/SideBarContext";
 import AddPage from "./pages/AddPage";
 import ExpensePage from "./pages/ExpensePage";
 import AnalyticsPage from "./pages/AnalyticsPage";
-import SettingsPage from "./pages/SettingsPage";
+import Settings from "./pages/Settings/Settings";
+import ExpenseCategory from "./pages/Settings/ExpenseCategory";
 import Page404 from "./pages/404";
 
 
@@ -19,7 +20,8 @@ function App() {
         <Route path="add" element={<AddPage />} />
         <Route path="expense" element={<ExpensePage />} />
         <Route path="analytics" element={<AnalyticsPage />} />
-        <Route path="settings" element={<SettingsPage />} />
+        <Route path="settings" element={<Settings />} />
+        <Route path="settings/expense/category" element={<ExpenseCategory />} />
 
         <Route path="*" element={<Page404 />} />
       </Routes>
