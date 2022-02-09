@@ -1,8 +1,28 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import axios from 'axios'
+import API from '../../api'
 
 const ExpenseCategory = () => {
+
     const [category, setCategory] = useState(false)
+    const [name, setName] = useState('')
+    const [appState, setAppState] = useState([]);
+
+    const store = () => {
+        API.post(`api/category/expense`, { name: name })
+            .then(resp => {
+                console.log(resp.data)
+            })
+    }
+
+    useEffect(() => {
+        API.get(`api/category/expense`)
+            .then(resp => {
+                setAppState(resp.data.expenses)
+            })
+    }, [setAppState])
+
     let categoryModal
 
     if (category)
@@ -23,7 +43,11 @@ const ExpenseCategory = () => {
                     <div className="mt-4 mb-6">
                         <label>
                             <p className="text-xs mb-1">Название категории</p>
-                            <input type="text" className="border outline-none p-2 w-full" />
+                            <input
+                                onChange={(event) => setName(event.target.value)}
+                                value={name}
+                                type="text"
+                                className="border outline-none p-2 w-full" />
                         </label>
                         <div className="grid grid-cols-5 gap-4">
                             <button>
@@ -47,7 +71,7 @@ const ExpenseCategory = () => {
                                 </div>
                             </button>
                         </div>
-                        <button className="w-full bg-green-200 p-3 fixed inset-x-0 bottom-0">
+                        <button onClick={() => store()} className="w-full bg-green-200 p-3 fixed inset-x-0 bottom-0">
                             Сохранить
                         </button>
                     </div>
@@ -70,14 +94,12 @@ const ExpenseCategory = () => {
                 <div className="text-sm text-gray-500 mt-3 mb-1">
                     Мои категории расходов
                 </div>
-                <div className="flex items-center mb-2 border p-2">
-                    <div className="w-8 h-8 bg-blue-500 rounded-full"></div>
-                    <div className="pl-2">Категория расходов</div>
-                </div>
-                <div className="flex items-center mb-2 border p-2">
-                    <div className="w-8 h-8 bg-blue-500 rounded-full"></div>
-                    <div className="pl-2">Категория расходов</div>
-                </div>
+                {appState.map((state) =>
+                    <div key={state.id} className="flex items-center mb-2 border p-2">
+                        <div className="w-8 h-8 bg-blue-500 rounded-full"></div>
+                        <div className="pl-2">{state.name}</div>
+                    </div>
+                )}
             </div>
         </div>
     )
