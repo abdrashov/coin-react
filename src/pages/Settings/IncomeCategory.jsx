@@ -1,33 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import API from '../../api'
-import IconList from './Components/IconList'
-import ColorList from './Components/ColorList'
-import { NavLink } from 'react-router-dom'
 
-const ExpenseCategory = () => {
+const IncomeCategory = () => {
 
     const [category, setCategory] = useState(false)
     const [name, setName] = useState('')
     const [appState, setAppState] = useState([]);
 
-    let categoryModal
-
     const store = () => {
-        API.post(`api/category/expense`, { name: name })
+        API.post(`api/category/income`, { name: name })
             .then(resp => {
                 console.log(resp.data)
             })
     }
 
     useEffect(() => {
-        API.get(`api/category/expense`)
+        API.get(`api/category/income`)
             .then(resp => {
-                setAppState(resp.data.expenses)
+                setAppState(resp.data.incomes)
             })
     }, [setAppState])
 
+    let categoryModal
 
     if (category)
         categoryModal = <div className="">
@@ -53,11 +49,27 @@ const ExpenseCategory = () => {
                                 type="text"
                                 className="border outline-none p-2 w-full" />
                         </label>
-                        <div className="">
-                            <p className="text-xs mb-1">Цвет для икона</p>
-                            <ColorList></ColorList>
-                            <p className="text-xs mb-1">Выберете икон</p>
-                            <IconList></IconList>
+                        <div className="grid grid-cols-5 gap-4">
+                            <button>
+                                <div className="mx-auto w-10 h-10 bg-blue-200 text-blue-500 text-lg rounded-full flex items-center justify-center active:bg-gray-100">
+                                    <FontAwesomeIcon icon="fa-solid fa-burger" />
+                                </div>
+                            </button>
+                            <button className="hover:text-blue-500 duration-150">
+                                <div className="mx-auto w-10 h-10 bg-blue-200 text-blue-500 text-lg rounded-full flex items-center justify-center">
+                                    <FontAwesomeIcon icon="fa-solid fa-burger" />
+                                </div>
+                            </button>
+                            <button className="hover:text-blue-500 duration-150">
+                                <div className="mx-auto w-10 h-10 bg-blue-200 text-blue-500 text-lg rounded-full flex items-center justify-center">
+                                    <FontAwesomeIcon icon="fa-solid fa-burger" />
+                                </div>
+                            </button>
+                            <button className="hover:text-blue-500 duration-150">
+                                <div className="mx-auto w-10 h-10 bg-blue-200 text-blue-500 text-lg rounded-full flex items-center justify-center">
+                                    <FontAwesomeIcon icon="fa-solid fa-burger" />
+                                </div>
+                            </button>
                         </div>
                         <button onClick={() => store()} className="w-full bg-green-200 p-3 fixed inset-x-0 bottom-0">
                             Сохранить
@@ -71,19 +83,16 @@ const ExpenseCategory = () => {
             {categoryModal}
             <header className="flex justify-center">
                 <p className="mb-2 text-sm text-center font-medium text-gray-700 ">
-                    Категория расходов
+                    Категория доходов
                 </p>
             </header>
             <div className="mt-4 mb-6">
-                <NavLink
-                    className="flex items-center w-full mb-2 border p-2"
-                    to={'/settings/expense/category/create'}>
+                <button onClick={() => setCategory(true)} className="flex items-center w-full mb-2 border p-2">
                     <div className="w-8 h-8 bg-blue-500 rounded-full"></div>
                     <div className="pl-2">Добавить новую категорию</div>
-                </NavLink>
-                
+                </button>
                 <div className="text-sm text-gray-500 mt-3 mb-1">
-                    Мои категории расходов
+                    Мои категории доходов
                 </div>
                 {appState.map((state) =>
                     <div key={state.id} className="flex items-center mb-2 border p-2">
@@ -96,4 +105,4 @@ const ExpenseCategory = () => {
     )
 }
 
-export default ExpenseCategory
+export default IncomeCategory

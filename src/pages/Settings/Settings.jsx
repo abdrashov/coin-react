@@ -58,11 +58,21 @@ const Settings = () => {
                 <div className="w-8 h-8 bg-blue-500 rounded-full"></div>
                 <div className="pl-2">Категория расходов</div>
             </NavLink>
-            
-            <div className="flex items-center mb-2 border p-2">
+
+            <NavLink
+                className="flex items-center mb-2 border p-2"
+                to={'/settings/income/category'}>
                 <div className="w-8 h-8 bg-blue-500 rounded-full"></div>
                 <div className="pl-2">Категория доходов</div>
-            </div>
+            </NavLink>
+
+            <NavLink
+                className="flex items-center mb-2 border p-2"
+                to={'/settings/account/category'}>
+                <div className="w-8 h-8 bg-blue-500 rounded-full"></div>
+                <div className="pl-2">Категория счетов</div>
+            </NavLink>
+            
             <div className="flex items-center mb-2 border p-2">
                 <div className="w-8 h-8 bg-blue-500 rounded-full"></div>
                 <div className="pl-2">Валюта</div>
