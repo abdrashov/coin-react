@@ -10,7 +10,7 @@ const SideBarContext = () => {
                 <div className="navigation-ul flex justify-evenly items-center">
                     <NavLink
                         className="relative flex justify-center text-center items-center flex-col"
-                        to={'/add'}>
+                        to={'/transaction'}>
                         <div className="show"></div>
                         <span className="icon text-gray-400">
                             <FontAwesomeIcon icon="fa-solid fa-circle-plus" />
@@ -21,7 +21,7 @@ const SideBarContext = () => {
                     </NavLink>
                     <NavLink
                         className="relative flex justify-center text-center items-center flex-col"
-                        to={'/expense'}>
+                        to={'/account'}>
                         <div className="show"></div>
                         <span className="icon text-gray-400">
                             <FontAwesomeIcon icon="fa-solid fa-wallet" />

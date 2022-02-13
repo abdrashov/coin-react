@@ -1,6 +1,32 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
-    purge: ["./src/**/*.{js,jsx,ts,tsx}"],
+    content: ["./public/**/*.html", "./src/**/*.{js,jsx,ts,tsx}"],
     theme: {
+        extend: {
+          maxHeight: {
+            '0': '0',
+            xl: '36rem',
+          },
+          fontFamily: {
+            sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
+          },
+        },
+        fontSize: {
+            xs: ".7rem",
+            sm: ".8rem",
+            tiny: ".9rem",
+            base: ".95rem",
+            lg: "1.125rem",
+            xl: "1.25rem",
+            "2xl": "1.5rem",
+            "3xl": "1.875rem",
+            "4xl": "2.25rem",
+            "5xl": "3rem",
+            "6xl": "4rem",
+            "7xl": "5rem",
+        },
         colors: {
             transparent: "transparent",
             white: "#ffffff",
@@ -16,7 +42,6 @@ module.exports = {
                 700: "#24262d",
                 800: "#1a1c23",
                 900: "#121317",
-                // default values from Tailwind UI palette
                 // '300': '#d2d6dc',
                 // '400': '#9fa6b2',
                 // '500': '#6b7280',
@@ -136,5 +161,14 @@ module.exports = {
         },
     },
     variants: {},
-    plugins: [],
+    plugins: [
+        plugin(function ({ addBase }) {
+            addBase({
+                "@font-face": {
+                    fontFamily: "Poppins",
+                    src: "url(https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap)",
+                },
+            });
+        }),
+    ],
 };
